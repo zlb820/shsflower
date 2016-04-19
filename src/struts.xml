@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<package name="default" extends="struts-default">
+<action name="browseCatalog" class="flowerAction" method="browseCatalog">
+	<result name="success">/menu.jsp</result>
+</action>
+<action name="browseNewFlower" class="flowerAction" method="browseFlower">
+	<result name="success">/newFlower.jsp</result>
+</action>
+<action name="browseFlowerPaging" class="flowerAction" method="browseFlowerPaging">
+	<result name="success">/browseFlowerPaging.jsp</result>
+</action>
+</package>
+</struts>    
