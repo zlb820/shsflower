@@ -20,7 +20,7 @@
             <column name="role" length="10" />
         </property>
         <one-to-one name="guashi" class="com.jkxy.model.Guashi" property-ref="user"></one-to-one>
-        <one-to-one name="userdetail" class="com.jkxy.model.Userdetail"></one-to-one>
+        <one-to-one name="userdetail" class="com.jkxy.model.Userdetail" cascade="all"></one-to-one>
         <set name="orderses" inverse="true">
             <key>
                 <column name="userid" />

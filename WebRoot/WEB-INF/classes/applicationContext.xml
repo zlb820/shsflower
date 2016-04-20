@@ -61,6 +61,19 @@
 		<property name="catalogService" ref="catalogService"></property>
 		<property name="flowerService" ref="flowerService"></property>
 	</bean>
+	
+	<!-- user的配置 -->
+	<bean id="userDao" class="com.jkxy.dao.impl.UserDao">
+		<property name="sessionfactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="userService" class="com.jkxy.service.impl.UserService">
+		<property name="userDao" ref="userDao"> </property>
+	</bean>
+	<bean id="userAction" class="com.jkxy.action.userAction">
+		<property name="userService" ref="userService"></property>
+	</bean>
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />

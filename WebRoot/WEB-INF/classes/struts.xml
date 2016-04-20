@@ -11,5 +11,28 @@
 <action name="browseFlowerPaging" class="flowerAction" method="browseFlowerPaging">
 	<result name="success">/browseFlowerPaging.jsp</result>
 </action>
+
+<!--userAdd  -->
+<action name="addUser" class="userAction" method="addUser">
+	<result name="success">/register_success.jsp</result>
+	<result name="error" >/register.jsp</result>
+</action>
+<!--  checkuser-->
+<action name="checkUser" class="userAction" method="checkUser">
+	<result name="success">/login_success.jsp</result>
+	<result name="error">/login_failure.jsp</result>  
+	
+</action>
+<!--logout  -->
+<action name="logOut" class="userAction" method="logOut">
+		
+	<result name="success">/index.jsp</result>		
+
+</action>
+<!--  修改密码-->
+<action name="updateUserPassword" class="userAction" method="updateUserPassword">
+	<result name="success">/login.jsp</result>
+	<result name="error">/modifyPassword.jsp</result>
+</action>
 </package>
 </struts>    
