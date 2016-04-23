@@ -46,25 +46,29 @@ public class UserDao implements IUserDao {
 		 * user1 = (User) list.get(0); return user1;
 		 */
 		// 测试 登陆
-		
-		  if("zlb820".equals(user.getUsername())&&"zlb820".equals(user.getPassword
-		  ())){ User user1=new User(); user1.setUsername("zlb820");
-		  user1.setPassword("zlb820"); user1.setRole("customer"); return user1;
-		  }else {
-		  
-		  return null; }
-		 
-	/*	Session session = sessionfactory.openSession();
-		String hql = "FROM User WHERE username = ? AND password = ? AND role = ?";
-		Query query = session.createQuery(hql);
-		query.setString(0, user.getUsername());
-		query.setString(1,user.getPassword());
-		query.setString(2,user.getRole());
-		List<User> list=query.list();
-			for(User users:list){
-				System.out.println("Yonghuming:"+users.getUsername());
+
+		if ("zlb820".equals(user.getUsername())
+				&& "zlb820".equals(user.getPassword())) {
+			User user1 = new User();
+			user1.setUsername("zlb820");
+			user1.setPassword("zlb820");
+			user1.setRole("customer");
+			user1.setUserid(6);
+			return user1;
+		} else {
+
+			return null;
 		}
-		return null;*/
+
+		/*
+		 * Session session = sessionfactory.openSession(); String hql =
+		 * "FROM User WHERE username = ? AND password = ? AND role = ?"; Query
+		 * query = session.createQuery(hql); query.setString(0,
+		 * user.getUsername()); query.setString(1,user.getPassword());
+		 * query.setString(2,user.getRole()); List<User> list=query.list();
+		 * for(User users:list){
+		 * System.out.println("Yonghuming:"+users.getUsername()); } return null;
+		 */
 
 	}
 

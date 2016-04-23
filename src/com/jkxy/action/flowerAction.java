@@ -18,6 +18,9 @@ public class flowerAction extends ActionSupport {
 	
 	
 	
+	
+	
+
 	public int getCatalogid() {
 		return catalogid;
 	}

@@ -3,6 +3,7 @@ package com.jkxy.service.impl;
 import java.util.List;
 
 import com.jkxy.dao.IFlowerDao;
+import com.jkxy.model.Flower;
 import com.jkxy.service.IFlowerService;
 
 public class FlowerService implements IFlowerService {
@@ -30,6 +31,11 @@ public class FlowerService implements IFlowerService {
 	@Override
 	public int getTotalByCatalog(int catalogid) {
 		return flowerDao.getTotalByCatalog(catalogid);
+	}
+
+	@Override
+	public Flower getFlowerById(int id) {
+		return flowerDao.getFlowerById(id);
 	}
 
 }

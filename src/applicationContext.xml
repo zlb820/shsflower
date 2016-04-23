@@ -74,6 +74,22 @@
 	<bean id="userAction" class="com.jkxy.action.userAction">
 		<property name="userService" ref="userService"></property>
 	</bean>
+	<!--cart的配置  -->
+	<bean id="shoppingAction" class="com.jkxy.action.shoppingAction">
+		<property name="flowerService" ref="flowerService"></property>
+	</bean>
+	<!--订单的提交  -->
+	<bean id="saveOrder" class="com.jkxy.dao.impl.SaveOrder">
+		<property name="sessionfactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean name="saveService" class="com.jkxy.service.impl.SaveOrderService">
+		<property name="saveOrderDao" ref="saveOrder"></property>
+	</bean>
+	<bean name="checkAction" class="com.jkxy.action.orderAction">
+		<property name="saveOrderService" ref="saveService"></property>
+	</bean>
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />

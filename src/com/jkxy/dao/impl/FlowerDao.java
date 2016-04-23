@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.jkxy.dao.IFlowerDao;
+import com.jkxy.model.Flower;
+import com.opensymphony.xwork2.ActionContext;
 
 public class FlowerDao implements IFlowerDao {
 	public SessionFactory sessionfactory;
@@ -61,6 +63,18 @@ public class FlowerDao implements IFlowerDao {
 		ses.close();
 		
 		return flowers.size();
+	}
+
+	@Override
+	public Flower getFlowerById(int  id) {
+		
+		Session ses=sessionfactory.openSession();
+		Transaction trans=ses.beginTransaction();
+		Query query=ses.createQuery("from Flower where flowerId="+id);
+		List flower=query.list();
+		trans.commit();
+		ses.close();
+		return (Flower) flower.get(0);
 	}
 
 }
