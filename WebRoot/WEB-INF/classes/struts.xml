@@ -1,55 +1,121 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-<package name="default" extends="struts-default">
-<action name="browseCatalog" class="flowerAction" method="browseCatalog">
-	<result name="success">/menu.jsp</result>
-</action>
-<action name="browseNewFlower" class="flowerAction" method="browseFlower">
-	<result name="success">/newFlower.jsp</result>
-</action>
-<action name="browseFlowerPaging" class="flowerAction" method="browseFlowerPaging">
-	<result name="success">/browseFlowerPaging.jsp</result>
-</action>
-
-<!--userAdd  -->
-<action name="addUser" class="userAction" method="addUser">
-	<result name="success">/register_success.jsp</result>
-	<result name="error" >/register.jsp</result>
-</action>
-<!--  checkuser-->
-<action name="checkUser" class="userAction" method="checkUser">
-	<result name="success">/login_success.jsp</result>
-	<result name="error">/login_failure.jsp</result>  
-	
-</action>
-<!--logout  -->
-<action name="logOut" class="userAction" method="logOut">
+	<package name="default" extends="struts-default" >
+			
 		
-	<result name="success">/index.jsp</result>		
+		<!-- <interceptors>
+			<interceptor name="loginInter" class="com.jkxy.interceptor.loginInter"></interceptor>
+			<interceptor-stack name="loginstack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="loginInter"></interceptor-ref>
+			</interceptor-stack>
 
-</action>
-<!--  修改密码-->
-<action name="updateUserPassword" class="userAction" method="updateUserPassword">
-	<result name="success">/login.jsp</result>
-	<result name="error">/modifyPassword.jsp</result>
-</action>
+		</interceptors>
+		<default-interceptor-ref name="loginstack"></default-interceptor-ref>
+		全局的处理结果 	
+			<global-results>
+			<result name="error">/login.jsp</result>
+			</global-results>
+		 -->
+		<action name="browseCatalog" class="flowerAction" method="browseCatalog">
+			<result name="success">/menu.jsp</result>
+		</action>
+		<!-- 浏览花品 -->
+		<action name="browseNewFlower" class="flowerAction" method="browseFlower">
+			<result name="success">/newFlower.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<!--浏览花品 -->
+		<action name="browseFlowerPaging" class="flowerAction" method="browseFlowerPaging">
+			<result name="success">/browseFlowerPaging.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
 
-<!--购物车  -->
-<action name="shoppingAction" class="shoppingAction" method="addToCart">
-<result name="success">/addToCart_success.jsp</result>
-</action>
+		<!--userAdd -->
+		<action name="addUser" class="userAction" method="addUser">
+			<result name="success">/register_success.jsp</result>
+			<result name="error">/register.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
 
-<!--更新购物车  -->
-<action name="updateCart" class="shoppingAction" method="updateCart">
-	<result name="success">/showCart.jsp</result>
-</action>
-<!--订单提交  -->
-<action name="checkOut" class="checkAction" method="checkOut">
-	<result name="success">/checkOut_success.jsp</result>
-	<result name="error">/login.jsp</result>
-</action>
-</package>
+		<!--logout -->
+		<action name="logOut" class="userAction" method="logOut">
+			<result name="success">/index.jsp</result>
+
+		</action>
+		<!-- 修改密码 -->
+		<action name="updateUserPassword" class="userAction" method="updateUserPassword">
+			<result name="success">/login.jsp</result>
+			<result name="error">/modifyPassword.jsp</result>
+		</action>
+
+		<!--购物车 -->
+		<action name="shoppingAction" class="shoppingAction" method="addToCart">
+			<result name="success">/addToCart_success.jsp</result>
+		</action>
+
+		<!--更新购物车 -->
+		<action name="updateCart" class="shoppingAction" method="updateCart">
+			<result name="success">/showCart.jsp</result>
+		</action>
+		<!--订单提交 -->
+		<action name="checkOut" class="checkAction" method="checkOut">
+			<result name="success">/checkOut_success.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+		<!-- 添加花品 -->
+		<action name="addOrUpdateFlower" class="flowerAction" method="addOrUpdateFlower">
+			<result name="success">/return/add_success.jsp</result>
+			<result name="error"> /addNewFlower.jsp</result>
+		</action>
+		<!--管理花品 -->
+		<action name="managerFlower" class="flowerAction" method="browseAllFlower">
+			<result name="success">/browseAllFlowerPaging.jsp </result>
+		</action>
+		<!--修改花品信息 -->
+		<action name="displayOneFlower" class="flowerAction" method="displayOneFolwer">
+			<result name="success">/displayOneFlower.jsp</result>
+		</action>
+		<!--删除花品 -->
+		<action name="deleteOneFlower" class="flowerAction" method="deleteFlower">
+			<result name="success">/delete.jsp</result>
+		</action>
+		<!-- 挂失 -->
+		<action name="guashiUser" class="userAction" method="guashiUser">
+			<result name="success">/ssh/WebRoot/return/success.jsp</result>
+			<result name="error">/ssh/WebRoot/return/error.jsp</result>
+
+		</action>
+		<!--解挂失 -->
+		<action name="jieguaUser" class="userAction" method="jieguaUser">
+			<result name="success">/ssh/WebRoot/return/success.jsp</result>
+			<result name="error">/ssh/WebRoot/return/error.jsp</result>
+		</action>
+	</package>
+
+	<!-- package -->
+	<package name="loginpac" namespace="/login" extends="struts-default">
+
+		<!--拦截器 -->
+		<interceptors>
+			<interceptor name="guashiInter" class="com.jkxy.interceptor.guashiInter"></interceptor>
+			<!--拦截器栈 -->
+			<interceptor-stack name="mystack">
+				<interceptor-ref name="guashiInter"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- checkuser -->
+		<action name="checkUser" class="userAction" method="checkUser">
+			<result name="success">/login_success.jsp</result>
+			<result name="error">/login_failure.jsp</result>
+			<!-- <interceptor-ref name="guashiInter"></interceptor-ref> -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+
+		</action>
+	</package>
 </struts> 
 
 

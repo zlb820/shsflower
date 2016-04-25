@@ -1,6 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -11,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'login_success.jsp' starting page</title>
+    <title>add_success</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,20 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
- 	
-    <s:if test="#session.role.equals('admin')">
-    <jsp:forward page="admin.jsp"></jsp:forward>  
-   
-    </s:if>
-    <s:elseif test="#session.role.equals('customer')">
-      <jsp:forward page="login.jsp"></jsp:forward>  
-     
-    </s:elseif>
-    
-     <s:elseif test="#request.msg!=null">
-      <jsp:forward page="login.jsp"></jsp:forward>  
-     
-    </s:elseif>
-    x
+    添加成功 ，祝贺你 boy！！！！<a href="index.jsp"></a>
   </body>
 </html>

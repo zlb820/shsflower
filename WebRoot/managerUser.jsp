@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -11,34 +10,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'login_success.jsp' starting page</title>
+    <title>My JSP 'admin_main.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	
+	<link rel="stylesheet" type="text/css" href="css/jkxyflower.css">
+	
 
   </head>
   
   <body>
- 	
-    <s:if test="#session.role.equals('admin')">
-    <jsp:forward page="admin.jsp"></jsp:forward>  
-   
-    </s:if>
-    <s:elseif test="#session.role.equals('customer')">
-      <jsp:forward page="login.jsp"></jsp:forward>  
-     
-    </s:elseif>
-    
-     <s:elseif test="#request.msg!=null">
-      <jsp:forward page="login.jsp"></jsp:forward>  
-     
-    </s:elseif>
-    x
+ 
+   <div class="content">
+		<div class="left">
+		
+
+		</div>
+		<div class="right">
+		<form action="userAction" method="post">
+      请输入你要处理的账号 
+	<input type="text" name="userid" >					
+		
+<input type="submit" value="挂失" onclick="this.form.action='guashiUser'"/>
+<input type="submit" value="解挂" onclick="this.form.action='jieguaUser'"/>
+</form>
+		
+		</div>
+	</div>
+	<jsp:include page="foot.jsp"></jsp:include>
   </body>
 </html>

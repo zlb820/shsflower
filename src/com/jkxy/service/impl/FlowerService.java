@@ -38,4 +38,20 @@ public class FlowerService implements IFlowerService {
 		return flowerDao.getFlowerById(id);
 	}
 
+	@Override
+	public boolean addOrUpdateFlower(Flower flower) {
+		return flowerDao.addOrUpdateFlower(flower);
+	}
+
+	@Override
+	public List getAllFlower() {
+		return flowerDao.getAllFlower();
+	}
+
+	@Override
+	public boolean deleteFlower(int flowerid) {
+		
+		return flowerDao.deleteFlower(flowerid);
+	}
+
 }

@@ -33,5 +33,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <s:elseif test="#session.user.role.equals('customer')">
          <jsp:forward page="index.jsp"></jsp:forward>   
      </s:elseif> 
+     
   </body>
 </html>

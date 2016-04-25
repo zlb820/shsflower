@@ -15,8 +15,18 @@ public class userAction extends ActionSupport {
 	private IUserService userService;
 	private String password;
 	private String pwd1;
+	private int userid;
 	
 	
+	
+
+	public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
 
 	public String getPassword() {
 		return password;
@@ -142,8 +152,23 @@ public class userAction extends ActionSupport {
 				return "error";	
 	}
 	
+	public String guashi() throws Exception{
+		if(userService.guashiUser(userid)){
+			return "success";
+			
+		}
+		
+		return "error";
+	}
 	
-	
+		public String jiegua() throws Exception{
+		
+		if(userService.jieguaUser(userid)){
+			
+			return "success";
+		}
+		return "error";
+	}
 }
 
 

@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-
+<%@taglib prefix="s"  uri="/struts-tags"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -11,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'login_success.jsp' starting page</title>
+    <title>My JSP 'delete.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,20 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
- 	
-    <s:if test="#session.role.equals('admin')">
-    <jsp:forward page="admin.jsp"></jsp:forward>  
-   
-    </s:if>
-    <s:elseif test="#session.role.equals('customer')">
-      <jsp:forward page="login.jsp"></jsp:forward>  
-     
-    </s:elseif>
-    
-     <s:elseif test="#request.msg!=null">
-      <jsp:forward page="login.jsp"></jsp:forward>  
-     
-    </s:elseif>
-    x
+  
+  <s:property value="#requset.delete"/>号花品，
+    delete seccess!!!
   </body>
 </html>

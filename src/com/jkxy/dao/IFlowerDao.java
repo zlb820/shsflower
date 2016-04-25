@@ -13,5 +13,12 @@ public interface IFlowerDao {
 	public int getTotalByCatalog(int catalogid);
 	//根据id 查询 flower
 	public Flower getFlowerById(int id);
+	//添加，修改 花品
+	public boolean addOrUpdateFlower(Flower flower);
+	//获取 所有 花品list
+	public List getAllFlower();
+	//删除花品
+	public boolean deleteFlower(int flowerid);
+	
 	
 }

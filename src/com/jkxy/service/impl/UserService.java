@@ -1,5 +1,7 @@
 package com.jkxy.service.impl;
 
+import java.util.List;
+
 import com.jkxy.dao.IUserDao;
 import com.jkxy.model.User;
 import com.jkxy.service.IUserService;
@@ -23,6 +25,22 @@ public class UserService implements IUserService {
 	@Override
 	public User checkUser(User user) {
 		return userDao.checkUser(user);
+	}
+
+	@Override
+	public boolean guashiUser(int id) {
+		
+		return userDao.guashiUser(id);
+	}
+
+	@Override
+	public boolean jieguaUser(int id) {
+		return userDao.jieguaUser(id);
+	}
+
+	@Override
+	public List getGuashi() {
+		return userDao.getGuashi();
 	}
 
 }

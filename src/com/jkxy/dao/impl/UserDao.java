@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.jkxy.dao.IUserDao;
+import com.jkxy.model.Guashi;
 import com.jkxy.model.User;
 
 public class UserDao implements IUserDao {
@@ -70,6 +71,45 @@ public class UserDao implements IUserDao {
 		 * System.out.println("Yonghuming:"+users.getUsername()); } return null;
 		 */
 
+	}
+
+	@Override
+	public boolean guashiUser(int id) {
+		Session ses=sessionfactory.openSession();
+		Transaction trans=ses.beginTransaction();
+		Query query=ses.createQuery("from User where userid="+id);
+		User user1=(User) query.list().get(0);
+		Guashi guashi1=new Guashi();
+		guashi1.setUser(user1);
+		user1.setGuashi(guashi1);
+		ses.saveOrUpdate(guashi1);
+		trans.commit();
+		ses.close();
+		
+		return true;
+	}
+
+	@Override
+	public boolean jieguaUser(int id) {
+		Session ses=sessionfactory.openSession();
+		Transaction trans=ses.beginTransaction();
+		Query query=ses.createQuery("from User where userid="+id);
+		User user1=(User) query.list().get(0);
+		ses.delete(user1.getGuashi());
+		trans.commit();
+		ses.close();
+		return true;
+	}
+
+	@Override
+	public List getGuashi() {
+		Session ses=sessionfactory.openSession();
+		Transaction trans=ses.beginTransaction();
+		Query query=ses.createQuery("from Guashi");
+		List list=query.list();
+		trans.commit();
+		ses.close();
+		return list;
 	}
 
 }
